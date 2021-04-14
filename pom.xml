@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.kirilo</groupId>
+    <artifactId>JAX-RS</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>jakarta_book</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <properties>
+        <src.dir>src</src.dir>
+        <test.dir>test</test.dir>
+        <java.version>8</java.version>
+        <!--        <maven.compiler.source>8</maven.compiler.source>-->
+        <!--        <maven.compiler.target>8</maven.compiler.target>-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <tomee.version>8.0.6</tomee.version>
+        <tomee.flavour>plume</tomee.flavour>
+        <jaxws-maven-plugin.version>2.3.2</jaxws-maven-plugin.version>
+        <jakartaee.api.version>8.0.0</jakartaee.api.version>
+        <jaxws-rt.version>2.3.3</jaxws-rt.version>
+        <jaxws-maven-plugin.version>2.6</jaxws-maven-plugin.version>
+    </properties>
+
+    <build>
+        <finalName>image-service</finalName>
+        <sourceDirectory>${src.dir}</sourceDirectory>
+        <testSourceDirectory>${test.dir}</testSourceDirectory>
+        <resources>
+            <resource>
+                <directory>${src.dir}/resources</directory>
+            </resource>
+        </resources>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                    <configuration>
+                        <!--                        <release>${java.version}</release>-->
+                        <!--                        <compilerArgs>&#45;&#45;enable-preview</compilerArgs>-->
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.3.1</version>
+                    <configuration>
+                        <webResources>
+                            <!-- https://stackoverflow.com/a/36484906/9586230 -->
+                            <!--                            <resource>
+                                                            <directory>${src.dir}/META-INF</directory>
+                                                            <filtering>true</filtering>
+
+                                                            <targetPath>WEB-INF/classes/META-INF</targetPath>
+                                                            <includes>
+                                                                &lt;!&ndash;                                    <include>**/persistence.xml</include>&ndash;&gt;
+                                                            </includes>
+                                                        </resource>-->
+                            <!--                            <resource>
+                                                            <directory>${src.dir}/resources</directory>
+                                                            <filtering>true</filtering>
+
+                                                            <targetPath>WEB-INF/classes/META-INF</targetPath>
+                                                            <includes>
+                                                            </includes>
+                                                        </resource>-->
+                        </webResources>
+                        <warSourceDirectory>web</warSourceDirectory>
+                        <archiveClasses>false</archiveClasses>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

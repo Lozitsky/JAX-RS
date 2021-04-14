@@ -1,0 +1,30 @@
+package com.kirilo.ws;
+
+import javax.enterprise.context.ApplicationScoped;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+@ApplicationScoped
+public class BookService {
+
+    private static Map<String, Book> bookRepository = new ConcurrentHashMap<>();
+
+    static {
+        Book book1 = new Book(); book1.setId("1"); book1.setTitle("Harry Potter");
+        Book book2 = new Book(); book2.setId("2"); book2.setTitle("The Lord of The Rings");
+        Book book3 = new Book(); book3.setId("3"); book3.setTitle("The Golden Compass");
+        bookRepository.put("1", book1);
+        bookRepository.put("2", book2);
+        bookRepository.put("3", book3);
+    }
+
+    public List<Book> findAllBooks() {
+        return new ArrayList<>(bookRepository.values());
+    }
+
+    public Book findBookById(String id) {
+        return bookRepository.get(id);
+    }
+}
