@@ -8,6 +8,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 @Path("books")
 @ApplicationScoped
@@ -15,6 +16,13 @@ public class BookController {
 
     @Inject
     private BookService bookService;
+
+    @GET
+    @Path("xml")
+    @Produces(MediaType.APPLICATION_XML)
+    public List<Book> getAllBooksXML() {
+        return bookService.findAllBooks();
+    }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

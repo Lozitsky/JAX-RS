@@ -76,7 +76,7 @@
                                                             </includes>
                                                         </resource>-->
                         </webResources>
-                        <warSourceDirectory>web</warSourceDirectory>
+<!--                        <warSourceDirectory>web</warSourceDirectory>-->
                         <archiveClasses>false</archiveClasses>
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                     </configuration>

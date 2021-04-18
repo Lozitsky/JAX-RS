@@ -1,2 +1,5 @@
 # Project exclude paths
 /jakarta_book/target/
+/jakarta_book/jakarta_book.iml
+/.idea
+/JAX-RS.iml
